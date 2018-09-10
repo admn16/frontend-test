@@ -1,9 +1,9 @@
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: "./src/index.js",
-  mode: "development",
+  entry: './src/index.js',
+  mode: 'development',
   module: {
     rules: [
       {
@@ -26,15 +26,18 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, "static/"),
-    publicPath: "/",
-    filename: "app.js"
+    path: path.resolve(__dirname, 'static/'),
+    publicPath: '/',
+    filename: 'app.js'
   },
   devServer: {
-    contentBase: path.join(__dirname, "static/"),
+    contentBase: path.join(__dirname, 'static/'),
     port: 3000,
-    publicPath: "http://localhost:3000/",
-    hotOnly: true
+    publicPath: 'http://localhost:3000/',
+    hotOnly: true,
+    proxy: {
+      '/api': 'http://localhost:3001'
+    }
   },
   plugins: [ new webpack.HotModuleReplacementPlugin() ]
 };
