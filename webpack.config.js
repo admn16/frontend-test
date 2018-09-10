@@ -18,16 +18,22 @@ module.exports = {
       }
     ]
   },
-  resolve: { extensions: ['*', '.js', '.jsx'] },
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+    modules: [
+      path.resolve(__dirname, 'src'),
+      'node_modules'
+    ],
+  },
   output: {
     path: path.resolve(__dirname, "static/"),
-    publicPath: "/static/",
+    publicPath: "/",
     filename: "app.js"
   },
   devServer: {
     contentBase: path.join(__dirname, "static/"),
     port: 3000,
-    publicPath: "http://localhost:3000/static/",
+    publicPath: "http://localhost:3000/",
     hotOnly: true
   },
   plugins: [ new webpack.HotModuleReplacementPlugin() ]
