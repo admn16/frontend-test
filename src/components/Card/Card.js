@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledCard = styled.div`
@@ -19,5 +20,9 @@ const StyledCard = styled.div`
 const Card = ({ children }) => (
   <StyledCard>{ children }</StyledCard>
 );
+
+Card.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Card;

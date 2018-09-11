@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import Card from 'components/Card/Card';
 import CounterForm from 'components/CounterForm/CounterForm';
 import { fetchCounters } from 'actions/counterActions';
 
@@ -13,9 +13,13 @@ const StyledApp = styled.main`
 `;
 
 class App extends PureComponent {
+  static propTypes = {
+    getCounters: PropTypes.func.isRequired,
+  };
 
   componentDidMount() {
-    this.props.fetchCounters();
+    const { getCounters } = this.props;
+    getCounters();
   }
 
   render() {
@@ -26,12 +30,12 @@ class App extends PureComponent {
 
         <article>
           <div>
-            <button>[ x ]</button>
+            <button type="button">[ x ]</button>
             <span>Name of Counter</span>
 
-            <button>+</button>
+            <button type="button">+</button>
             <span>0</span>
-            <button>-</button>
+            <button type="button">-</button>
           </div>
         </article>
 
@@ -44,17 +48,17 @@ class App extends PureComponent {
   }
 }
 
-const mapStateToProps = (state) => ({
-  counters: state.counters
+const mapStateToProps = state => ({
+  counters: state.counters,
 });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  fetchCounters: fetchCounters
+const mapDispatchToProps = dispatch => bindActionCreators({
+  getCounters: fetchCounters,
 }, dispatch);
 
 export default hot(module)(
   connect(
     mapStateToProps,
-    mapDispatchToProps
-  )(App)
+    mapDispatchToProps,
+  )(App),
 );
