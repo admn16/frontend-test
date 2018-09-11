@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import CounterForm from 'components/CounterForm/CounterForm';
 import Counters from 'components/Counters/Counters';
 import * as counterActions from 'actions/counterActions';
+import * as uiActions from 'actions/uiActions';
 
 const StyledApp = styled.main`
   margin: 0 auto;
@@ -19,7 +20,10 @@ class App extends PureComponent {
     incrementCounter: PropTypes.func.isRequired,
     decrementCounter: PropTypes.func.isRequired,
     deleteCounter: PropTypes.func.isRequired,
+    updateText: PropTypes.func.isRequired,
+
     counters: PropTypes.arrayOf(PropTypes.object),
+    text: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
@@ -29,6 +33,10 @@ class App extends PureComponent {
   componentDidMount() {
     const { getCounters } = this.props;
     getCounters();
+  }
+
+  onAdd = () => {
+    console.log('ADDD!!!');
   }
 
   onDelete = id => () => {
@@ -46,12 +54,22 @@ class App extends PureComponent {
     incrementCounter(id);
   };
 
+  onUpdateText = ({ target }) => {
+    const { updateText } = this.props;
+    updateText(target.value);
+  }
+
   render() {
-    const { counters } = this.props;
+    const { counters, text } = this.props;
+    console.log(text);
 
     return (
       <StyledApp>
-        <CounterForm />
+        <CounterForm
+          onChange={this.onUpdateText}
+          onSubmit={this.onAdd}
+          text={text}
+        />
         <Counters
           counters={counters}
           onDelete={this.onDelete}
@@ -69,6 +87,7 @@ class App extends PureComponent {
 
 const mapStateToProps = state => ({
   counters: state.counters,
+  text: state.ui.text,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
@@ -76,6 +95,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   incrementCounter: counterActions.incrementCounter,
   decrementCounter: counterActions.decrementCounter,
   deleteCounter: counterActions.deleteCounter,
+  updateText: uiActions.updateText,
 }, dispatch);
 
 export default hot(module)(
