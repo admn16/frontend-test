@@ -12,6 +12,7 @@ import * as uiActions from 'actions/uiActions';
 
 const StyledApp = styled.main`
   margin: 0 auto;
+  padding-top: 20px;
   width: 400px;
 `;
 
@@ -69,9 +70,11 @@ class App extends PureComponent {
 
   render() {
     const { counters, text } = this.props;
-    const total = counters
-      .map(i => i.count)
-      .reduce((acc, curr) => acc + curr);
+    const total = counters.length
+      ? counters
+        .map(i => i.count)
+        .reduce((acc, curr) => acc + curr)
+      : 0;
 
     return (
       <StyledApp>

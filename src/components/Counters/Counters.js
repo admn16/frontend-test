@@ -1,11 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Card from 'components/Card/Card';
 import Counter from 'components/Counter/Counter';
 
+const blinking = keyframes`
+  50% {
+    opacity: 0;
+  }
+`;
+
 const StyledCounters = styled(Card)`
   margin: 10px 0 !important;
+  min-height: 100px;
+`;
+
+const NoDataText = styled.span`
+  font-size: 12px;
+  animation: ${blinking} 1s linear infinite;
 `;
 
 const Counters = ({
@@ -16,6 +28,14 @@ const Counters = ({
 }) => (
   <StyledCounters>
     <article>
+      {
+        counters.length === 0 && (
+          <NoDataText>
+            <i className="far fa-hand-point-up" />
+            &nbsp;Add something...
+          </NoDataText>
+        )
+      }
       { counters.map(({ id, title, count }) => (
         <Counter
           key={id}
