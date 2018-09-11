@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import CounterForm from 'components/CounterForm/CounterForm';
 import Counters from 'components/Counters/Counters';
+import Total from 'components/Total/Total';
 import * as counterActions from 'actions/counterActions';
 import * as uiActions from 'actions/uiActions';
 
@@ -82,10 +83,7 @@ class App extends PureComponent {
           onDecrement={this.onDecrement}
           onIncrement={this.onIncrement}
         />
-        <article>
-          <span>Total</span>
-          <span>10</span>
-        </article>
+        <Total total={counters.length} />
       </StyledApp>
     );
   }
