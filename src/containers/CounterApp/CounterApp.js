@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import Card from 'components/Card/Card';
 import CounterForm from 'components/CounterForm/CounterForm';
 import { fetchCounters } from 'actions/counterActions';
-import 'App.css';
 
 const StyledApp = styled.main`
   margin: 0 auto;

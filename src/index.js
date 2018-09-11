@@ -5,7 +5,8 @@ import { Provider } from 'react-redux'
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from 'reducers';
 import sagas from 'sagas';
-import App from 'App';
+import App from 'containers/CounterApp/CounterApp';
+import 'index.css';
 
 const sagaMiddleware = createSagaMiddleware();
 
