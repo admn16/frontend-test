@@ -4,6 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
+  devtool: 'cheap-module-eval-source-map',
   module: {
     rules: [
       {
@@ -11,26 +12,29 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           'babel-loader',
-          'eslint-loader'
-        ]
+          'eslint-loader',
+        ],
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
-      }
-    ]
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+    ],
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
     modules: [
       path.resolve(__dirname, 'src'),
-      'node_modules'
+      'node_modules',
     ],
   },
   output: {
     path: path.resolve(__dirname, 'static/'),
     publicPath: '/',
-    filename: 'app.js'
+    filename: 'app.js',
   },
   devServer: {
     contentBase: path.join(__dirname, 'static/'),
@@ -38,8 +42,8 @@ module.exports = {
     publicPath: 'http://localhost:3000/',
     hotOnly: true,
     proxy: {
-      '/api': 'http://localhost:3001'
-    }
+      '/api': 'http://localhost:3001',
+    },
   },
-  plugins: [ new webpack.HotModuleReplacementPlugin() ]
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 };
