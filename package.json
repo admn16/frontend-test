@@ -4,11 +4,10 @@
   "description": "sitepoint front end test",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack --mode production && NODE_ENV=production PORT=3000 node index.js",
     "build-dev": "webpack --mode development",
     "client": "webpack-dev-server --mode development",
     "server": "nodemon ./index.js",
-    "start": "npm run build && NODE_ENV=production PORT=3000 node index.js",
     "start-dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "jest --config tests/jestSetup.js",
     "test-watch": "jest --config tests/jestSetup.js --watch"
