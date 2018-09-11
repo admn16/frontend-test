@@ -69,6 +69,9 @@ class App extends PureComponent {
 
   render() {
     const { counters, text } = this.props;
+    const total = counters
+      .map(i => i.count)
+      .reduce((acc, curr) => acc + curr);
 
     return (
       <StyledApp>
@@ -83,7 +86,7 @@ class App extends PureComponent {
           onDecrement={this.onDecrement}
           onIncrement={this.onIncrement}
         />
-        <Total total={counters.length} />
+        <Total total={total} />
       </StyledApp>
     );
   }
