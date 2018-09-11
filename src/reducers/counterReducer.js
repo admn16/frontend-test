@@ -1,8 +1,8 @@
-import * as types from 'actions/counterActionTypes';
+import { UPDATE_COUNTERS } from 'actions/counterActionTypes';
 
 const counterReducer = (state = [], action) => {
   switch (action.type) {
-    case types.FETCH_COUNTERS_SUCCESS:
+    case UPDATE_COUNTERS:
       return action.payload;
 
     default:

@@ -15,7 +15,7 @@ const Counters = ({
   onIncrement,
 }) => (
   <StyledCounters>
-    <article className={counters}>
+    <article>
       { counters.map(({ id, title, count }) => (
         <Counter
           key={id}

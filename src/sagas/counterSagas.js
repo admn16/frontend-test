@@ -1,7 +1,7 @@
 import { call, takeEvery, put } from 'redux-saga/effects';
 import {
   FETCH_COUNTERS,
-  FETCH_COUNTERS_SUCCESS,
+  UPDATE_COUNTERS,
   INCREMENT,
   DECREMENT,
   DELETE,
@@ -11,7 +11,7 @@ import * as counterApi from 'services/counterApi';
 function* fetchCounters() {
   try {
     const counters = yield call(counterApi.fetchCounters);
-    yield put({ type: FETCH_COUNTERS_SUCCESS, payload: counters });
+    yield put({ type: UPDATE_COUNTERS, payload: counters });
   } catch (ex) {
     console.error(ex);
   }
@@ -20,7 +20,7 @@ function* fetchCounters() {
 function* incrementCounter({ payload }) {
   try {
     const counters = yield call(counterApi.incrementCounter, payload);
-    yield put({ type: FETCH_COUNTERS_SUCCESS, payload: counters });
+    yield put({ type: UPDATE_COUNTERS, payload: counters });
   } catch (ex) {
     console.error(ex);
   }
@@ -29,7 +29,7 @@ function* incrementCounter({ payload }) {
 function* decrementCounter({ payload }) {
   try {
     const counters = yield call(counterApi.decrementCounter, payload);
-    yield put({ type: FETCH_COUNTERS_SUCCESS, payload: counters });
+    yield put({ type: UPDATE_COUNTERS, payload: counters });
   } catch (ex) {
     console.error(ex);
   }
@@ -38,7 +38,7 @@ function* decrementCounter({ payload }) {
 function* deleteCounter({ payload }) {
   try {
     const counters = yield call(counterApi.deleteCounter, payload);
-    yield put({ type: FETCH_COUNTERS_SUCCESS, payload: counters });
+    yield put({ type: UPDATE_COUNTERS, payload: counters });
   } catch (ex) {
     console.error(ex);
   }

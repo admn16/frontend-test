@@ -16,8 +16,8 @@ const StyledApp = styled.main`
 class App extends PureComponent {
   static propTypes = {
     getCounters: PropTypes.func.isRequired,
-    increment: PropTypes.func.isRequired,
-    decrement: PropTypes.func.isRequired,
+    incrementCounter: PropTypes.func.isRequired,
+    decrementCounter: PropTypes.func.isRequired,
     deleteCounter: PropTypes.func.isRequired,
     counters: PropTypes.arrayOf(PropTypes.object),
   };
@@ -37,13 +37,13 @@ class App extends PureComponent {
   };
 
   onDecrement = id => () => {
-    const { decrement } = this.props;
-    decrement(id);
+    const { decrementCounter } = this.props;
+    decrementCounter(id);
   };
 
   onIncrement = id => () => {
-    const { increment } = this.props;
-    increment(id);
+    const { incrementCounter } = this.props;
+    incrementCounter(id);
   };
 
   render() {
@@ -73,8 +73,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   getCounters: counterActions.fetchCounters,
-  increment: counterActions.incrementCounter,
-  decrement: counterActions.decrementCounter,
+  incrementCounter: counterActions.incrementCounter,
+  decrementCounter: counterActions.decrementCounter,
   deleteCounter: counterActions.deleteCounter,
 }, dispatch);
 
