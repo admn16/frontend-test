@@ -12,6 +12,10 @@
       {
         "regenerator": true
       }
-    ]
+    ],
+    ["babel-plugin-styled-components", {
+      "displayName": true,
+      "filename": false
+    }]
   ]
 }
