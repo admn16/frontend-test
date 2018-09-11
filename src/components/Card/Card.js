@@ -17,12 +17,17 @@ const StyledCard = styled.div`
   }
 `;
 
-const Card = ({ children }) => (
-  <StyledCard>{ children }</StyledCard>
+const Card = ({ children, className }) => (
+  <StyledCard className={className}>{ children }</StyledCard>
 );
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
+
+Card.defaultProps = {
+  className: '',
 };
 
 export default Card;

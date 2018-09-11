@@ -5,7 +5,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import CounterForm from 'components/CounterForm/CounterForm';
-import { fetchCounters } from 'actions/counterActions';
+import Counters from 'components/Counters/Counters';
+import * as counterActions from 'actions/counterActions';
 
 const StyledApp = styled.main`
   margin: 0 auto;
@@ -15,6 +16,14 @@ const StyledApp = styled.main`
 class App extends PureComponent {
   static propTypes = {
     getCounters: PropTypes.func.isRequired,
+    increment: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired,
+    deleteCounter: PropTypes.func.isRequired,
+    counters: PropTypes.arrayOf(PropTypes.object),
+  };
+
+  static defaultProps = {
+    counters: [],
   };
 
   componentDidMount() {
@@ -22,23 +31,33 @@ class App extends PureComponent {
     getCounters();
   }
 
+  onDelete = id => () => {
+    const { deleteCounter } = this.props;
+    deleteCounter(id);
+  };
+
+  onDecrement = id => () => {
+    const { decrement } = this.props;
+    decrement(id);
+  };
+
+  onIncrement = id => () => {
+    const { increment } = this.props;
+    increment(id);
+  };
+
   render() {
-    console.log(this.props);
+    const { counters } = this.props;
+
     return (
       <StyledApp>
         <CounterForm />
-
-        <article>
-          <div>
-            <button type="button">[ x ]</button>
-            <span>Name of Counter</span>
-
-            <button type="button">+</button>
-            <span>0</span>
-            <button type="button">-</button>
-          </div>
-        </article>
-
+        <Counters
+          counters={counters}
+          onDelete={this.onDelete}
+          onDecrement={this.onDecrement}
+          onIncrement={this.onIncrement}
+        />
         <article>
           <span>Total</span>
           <span>10</span>
@@ -53,7 +72,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  getCounters: fetchCounters,
+  getCounters: counterActions.fetchCounters,
+  increment: counterActions.incrementCounter,
+  decrement: counterActions.decrementCounter,
+  deleteCounter: counterActions.deleteCounter,
 }, dispatch);
 
 export default hot(module)(

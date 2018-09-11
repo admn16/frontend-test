@@ -2,6 +2,9 @@ import { call, takeEvery, put } from 'redux-saga/effects';
 import {
   FETCH_COUNTERS,
   FETCH_COUNTERS_SUCCESS,
+  INCREMENT,
+  DECREMENT,
+  DELETE,
 } from 'actions/counterActionTypes';
 import * as counterApi from 'services/counterApi';
 
@@ -14,6 +17,36 @@ function* fetchCounters() {
   }
 }
 
+function* incrementCounter({ payload }) {
+  try {
+    const counters = yield call(counterApi.incrementCounter, payload);
+    yield put({ type: FETCH_COUNTERS_SUCCESS, payload: counters });
+  } catch (ex) {
+    console.error(ex);
+  }
+}
+
+function* decrementCounter({ payload }) {
+  try {
+    const counters = yield call(counterApi.decrementCounter, payload);
+    yield put({ type: FETCH_COUNTERS_SUCCESS, payload: counters });
+  } catch (ex) {
+    console.error(ex);
+  }
+}
+
+function* deleteCounter({ payload }) {
+  try {
+    const counters = yield call(counterApi.deleteCounter, payload);
+    yield put({ type: FETCH_COUNTERS_SUCCESS, payload: counters });
+  } catch (ex) {
+    console.error(ex);
+  }
+}
+
 export default [
   takeEvery(FETCH_COUNTERS, fetchCounters),
+  takeEvery(INCREMENT, incrementCounter),
+  takeEvery(DECREMENT, decrementCounter),
+  takeEvery(DELETE, deleteCounter),
 ];
