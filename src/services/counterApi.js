@@ -1,6 +1,6 @@
 import axios from 'axios';
 const BASE_PATH = '/api/v1';
 
-export const getCounters = () =>
+export const fetchCounters = () =>
   axios.get(`${BASE_PATH}/counters`)
     .then(({ data }) => data);
