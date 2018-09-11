@@ -16,7 +16,7 @@ const StyledApp = styled.main`
   width: 400px;
 `;
 
-class App extends PureComponent {
+class CounterApp extends PureComponent {
   static propTypes = {
     getCounters: PropTypes.func.isRequired,
     incrementCounter: PropTypes.func.isRequired,
@@ -109,9 +109,11 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   updateText: uiActions.updateText,
 }, dispatch);
 
+export { CounterApp };
+
 export default hot(module)(
   connect(
     mapStateToProps,
     mapDispatchToProps,
-  )(App),
+  )(CounterApp),
 );

@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CounterApp/> renders correctly 1`] = `
+<main
+  className="CounterApp__StyledApp-c6b218-0 bnetwR"
+>
+  <div
+    className="Card__StyledCard-hu4gdg-0 hNyZiT"
+  >
+    <form
+      className="CounterForm__Form-sc-1w9o0z7-0 emKkNx"
+      onSubmit={[Function]}
+    >
+      <input
+        className="CounterForm__Input-sc-1w9o0z7-1 fHQEKr"
+        onChange={[Function]}
+        placeholder="Add new counter"
+        value="test 123123"
+      />
+      <button
+        className="CounterForm__Button-sc-1w9o0z7-2 iXLQka"
+        type="submit"
+      >
+        +
+      </button>
+    </form>
+  </div>
+  <div
+    className="Counters__StyledCounters-vlq2we-0 iBWZCO Card__StyledCard-hu4gdg-0 hNyZiT"
+  >
+    <article>
+      <div
+        className="Counter__StyledCounter-sc-1q55mxl-0 eWqOki"
+      >
+        <button
+          className="Counter__Delete-sc-1q55mxl-3 foqxoZ"
+          onClick={[Function]}
+          type="button"
+        >
+          <i
+            className="fas fa-trash-alt"
+          />
+        </button>
+        <span
+          className="Counter__Title-sc-1q55mxl-1 gzIbEF"
+        >
+          test123
+        </span>
+        <button
+          className="Counter__Increment-sc-1q55mxl-4 gSvDCI Counter__Delete-sc-1q55mxl-3 foqxoZ"
+          onClick={[Function]}
+          type="button"
+        >
+          <i
+            className="fas fa-plus"
+          />
+        </button>
+        <span
+          className="Counter__Count-sc-1q55mxl-2 egAVVf"
+        >
+          1
+        </span>
+        <button
+          className="Counter__Decrement-sc-1q55mxl-5 cJKjoF Counter__Increment-sc-1q55mxl-4 gSvDCI Counter__Delete-sc-1q55mxl-3 foqxoZ"
+          onClick={[Function]}
+          type="button"
+        >
+          <i
+            className="fas fa-minus"
+          />
+        </button>
+      </div>
+    </article>
+  </div>
+  <div
+    className="Total__StyledTotal-i597gn-0 glAgzs Card__StyledCard-hu4gdg-0 hNyZiT"
+  >
+    <p
+      className="Total__Text-i597gn-1 gYVLGj"
+    >
+      Total Sum: 
+      <span
+        className="Total__TotalText-i597gn-2 hhdlqZ"
+      >
+        1
+      </span>
+    </p>
+  </div>
+</main>
+`;
