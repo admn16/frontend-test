@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
 import { hot } from 'react-hot-loader';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Card from 'components/Card/Card';
 import CounterForm from 'components/CounterForm/CounterForm';
-import * as counterApi from 'services/api';
+import { fetchCounters } from 'actions/counterActions';
 import 'App.css';
 
 const StyledApp = styled.main`
@@ -13,11 +15,12 @@ const StyledApp = styled.main`
 
 class App extends PureComponent {
 
-  async componentDidMount() {
-    console.log(await counterApi.getCounters());
+  componentDidMount() {
+    this.props.fetchCounters();
   }
 
   render() {
+    console.log(this.props);
     return (
       <StyledApp>
         <CounterForm />
@@ -42,4 +45,17 @@ class App extends PureComponent {
   }
 }
 
-export default hot(module)(App);
+const mapStateToProps = (state) => ({
+  counters: state.counters
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  fetchCounters: fetchCounters
+}, dispatch);
+
+export default hot(module)(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);
