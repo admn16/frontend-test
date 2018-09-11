@@ -5,7 +5,9 @@ import {
   INCREMENT,
   DECREMENT,
   DELETE,
+  ADD,
 } from 'actions/counterActionTypes';
+import { UPDATE_TEXT } from 'actions/uiActionTypes';
 import * as counterApi from 'services/counterApi';
 
 function* fetchCounters() {
@@ -44,9 +46,20 @@ function* deleteCounter({ payload }) {
   }
 }
 
+function* addCounter({ payload }) {
+  try {
+    const counters = yield call(counterApi.addCounter, payload);
+    yield put({ type: UPDATE_COUNTERS, payload: counters });
+    yield put({ type: UPDATE_TEXT, payload: '' });
+  } catch (ex) {
+    console.error(ex);
+  }
+}
+
 export default [
   takeEvery(FETCH_COUNTERS, fetchCounters),
   takeEvery(INCREMENT, incrementCounter),
   takeEvery(DECREMENT, decrementCounter),
   takeEvery(DELETE, deleteCounter),
+  takeEvery(ADD, addCounter),
 ];

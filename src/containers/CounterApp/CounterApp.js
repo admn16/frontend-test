@@ -20,6 +20,7 @@ class App extends PureComponent {
     incrementCounter: PropTypes.func.isRequired,
     decrementCounter: PropTypes.func.isRequired,
     deleteCounter: PropTypes.func.isRequired,
+    addCounter: PropTypes.func.isRequired,
     updateText: PropTypes.func.isRequired,
 
     counters: PropTypes.arrayOf(PropTypes.object),
@@ -35,8 +36,14 @@ class App extends PureComponent {
     getCounters();
   }
 
-  onAdd = () => {
-    console.log('ADDD!!!');
+  onAdd = (e) => {
+    e.preventDefault();
+
+    const { addCounter, text } = this.props;
+
+    if (text) {
+      addCounter(text);
+    }
   }
 
   onDelete = id => () => {
@@ -61,7 +68,6 @@ class App extends PureComponent {
 
   render() {
     const { counters, text } = this.props;
-    console.log(text);
 
     return (
       <StyledApp>
@@ -95,6 +101,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   incrementCounter: counterActions.incrementCounter,
   decrementCounter: counterActions.decrementCounter,
   deleteCounter: counterActions.deleteCounter,
+  addCounter: counterActions.addCounter,
   updateText: uiActions.updateText,
 }, dispatch);
 

@@ -6,6 +6,10 @@ export const fetchCounters = () => axios
   .get(`${BASE_PATH}/counters`)
   .then(({ data }) => data);
 
+export const addCounter = title => axios
+  .post(`${BASE_PATH}/counter`, { title })
+  .then(({ data }) => data);
+
 export const incrementCounter = id => axios
   .post(`${BASE_PATH}/counter/inc`, { id })
   .then(({ data }) => data);

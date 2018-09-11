@@ -18,3 +18,8 @@ export const deleteCounter = id => ({
   type: actionTypes.DELETE,
   payload: id,
 });
+
+export const addCounter = title => ({
+  type: actionTypes.ADD,
+  payload: title,
+});
