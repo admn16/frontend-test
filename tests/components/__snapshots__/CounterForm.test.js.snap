@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CounterForm/> renders correctly 1`] = `
+<div
+  className="Card__StyledCard-hu4gdg-0 hNyZiT"
+>
+  <form
+    className="CounterForm__Form-sc-1w9o0z7-0 emKkNx"
+    onSubmit={[MockFunction]}
+  >
+    <input
+      className="CounterForm__Input-sc-1w9o0z7-1 fHQEKr"
+      onChange={[MockFunction]}
+      placeholder="Add new counter"
+      value="Title"
+    />
+    <button
+      className="CounterForm__Button-sc-1w9o0z7-2 iXLQka"
+      type="submit"
+    >
+      +
+    </button>
+  </form>
+</div>
+`;

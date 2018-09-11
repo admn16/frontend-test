@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Total/> renders correctly 1`] = `
+<div
+  className="Total__StyledTotal-i597gn-0 glAgzs Card__StyledCard-hu4gdg-0 hNyZiT"
+>
+  <p
+    className="Total__Text-i597gn-1 gYVLGj"
+  >
+    Total Sum: 
+    <span
+      className="Total__TotalText-i597gn-2 hhdlqZ"
+    >
+      10
+    </span>
+  </p>
+</div>
+`;
