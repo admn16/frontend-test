@@ -11,7 +11,7 @@ exports[`<Total/> renders correctly 1`] = `
     <span
       className="Total__TotalText-i597gn-2 hhdlqZ"
     >
-      10
+      100000
     </span>
   </p>
 </div>
